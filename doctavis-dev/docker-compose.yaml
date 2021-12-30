@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+
+  php_fpm_doctavis:
+    build: ./docker
+    container_name: php_fpm_doctavis
+    volumes:
+      - .:/var/www/app
+    links:
+      - database_doctavis
+
+  web_app_doctavis:
+    image: nginx:latest
+    container_name: web_app_doctavis
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./public:/var/www/app/public
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php_fpm_doctavis
+
+  database_doctavis:
+    image: mysql:5.7
+    container_name: database_doctavis
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_doctavis_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: doctavis
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: database_doctavis
+    links:
+      - database_doctavis
+
+volumes:
+  db_doctavis_data:

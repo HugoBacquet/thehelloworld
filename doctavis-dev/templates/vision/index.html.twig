@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row text-center m-4">
+            <div class="col">
+                <h1>Notre vision</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-7 text-justify">
+                <p>Doctavis : une solution technologique pour un accès personnalisé aux soins, basée sur un matching intelligent entre patients et praticients.</p>
+                <p>Compte tenu de la complexité croissante d'un parcours de santé personnalisé, en situation d'handicap, atteint d'une maladie chronique, en cas d'errance de diagnostic ou encore vivant dans un désert médical.</p>
+                <p>Trouver les praticiens de soins adaptés peut être vécu comme un parcours du combattant, chronophage, gaspillant inutilement des ressources publiques et privées, et mène parfois certains patients à l'abandon de leurs soins.</p>
+                <p>Doctavis se propose de répondre à cette problématique essentielle, pour tout un chacun, en proposant un accompagnement individualisé et sécurisé dans la recherche des bons partenaires de santé (médicale, paramédicale et médecine alternative), adaptés aux besoins spécifiques du patient par un référencement intelligent de spraticiens sur des critères établis par les usagers.</p>
+            </div>
+            <div class="col-sm-7 text-justify fs-7">
+                <h2 class="fs-4 text-center mt-5 mb-3">Vous avez un rôle à jouer !</h2>
+                <p>Autant l'usage de DOCTAVIS est gratuit pour les patients, autant l'efficacité de l'outil DOCTAVIS repose sur la recommandation des professionnels de santé qui vous ont positivement marqué.</p>
+                <p>En participant à ce référencement, vous aidez le plus grand nombre à rencontrer aussi, comme vous, l'écosystème médical qui pourra les accompagner au mieux dans cette étape de leur vie.</p>
+                <div class="row text-center">
+                    <div class="col">
+                        <p class="m-4">&laquo; La solidarité comme moyen d'efficacité &raquo; !</p>
+                        <a class="btn btn-primary my-2" href="{{ path('recommend_practitioner') }}">Recommander un praticien</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

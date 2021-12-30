@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            {% if count > 0 %}
+                <div class="row justify-content-center">
+                    <div class="col-8 col-lg-6 mt-5">
+                        <h1>{{ count ~ ' ' ~ speciality }} {% if count > 1 %}s{% endif %} à proximité !</h1>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 mt-4">
+                        <p>Afin de vous mettre en relation avec le professionnel idéal nous allons vous poser <span class="font-weight-bold">10 questions</span></p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row justify-content-center">
+                    <div class="col-8 col-lg-6 mt-5">
+                        <h1>Nous n'avons trouvé aucun {{ speciality }} à proximité !</h1>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row justify-content-center">
+                <div class="col-10 col-lg-6 mt-1">
+                    <img class="col-12 col-sm-9 col-md-8 w-50" src="{{ asset('img/perso-ordinateur.jpg') }}" alt="Personne souriante devant son ordinateur lève une main">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-end mt-3">
+                    {% if count > 0 %}
+                        <a class="btn btn-lg btn-outline-secondary my-3" href="{{ path('search_by_criterions') }}">→ Suivant</a>
+                    {% else %}
+                        <a class="btn btn-lg btn-outline-secondary my-3" href="{{ path('home') }}">→ Retour</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

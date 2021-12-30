@@ -1,0 +1,150 @@
+<div class="container-sm-fluid recommend-step2">
+    <div class="row title row title text-center text-sm-start">
+        <div class="col-12 col-sm-auto">
+            <h1>Critères et recommandations<span class="d-none d-sm-inline"> - </span></h1>
+        </div>
+        <div class="col d-flex align-items-center p-0">
+            <h2>étape 1/2</h2>
+        </div>
+    </div>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-xxl-5">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="criterions main">
+                        <div class="title-input">
+                            <h2>{{ form_label(form.languages) }}</h2>
+                            {{ form_widget(form.languages, { 'attr' : { 'class': 'js-example-basic-multiple form-select' }}) }}
+                            {{ form_errors(form.languages) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.sex) }}</h2>
+                            {{ form_widget(form.sex, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.sex) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.thirdPartyPayment) }}</h2>
+                            {{ form_widget(form.thirdPartyPayment, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.thirdPartyPayment) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.paymentMethods) }}</h2>
+                            {{ form_widget(form.paymentMethods) }}
+                            {{ form_errors(form.paymentMethods) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.sector) }}</h2>
+                            {{ form_widget(form.sector, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.sector) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.isCMUAccepted) }}</h2>
+                            {{ form_widget(form.isCMUAccepted, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.isCMUAccepted) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.consultationTypes) }}</h2>
+                            {{ form_widget(form.consultationTypes, { 'attr' : { 'class': 'js-example-basic-multiple form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.consultationTypes) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.waitingTime) }}</h2>
+                            {{ form_widget(form.waitingTime, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.waitingTime) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="criterions additional">
+                        <h2>Critères consultation en cabinet</h2>
+                        {% if form.parking is defined %}
+                            <div class="title-input">
+                                <h2>{{ form_label(form.parking, 'Parking') }}</h2>
+                                {{ form_widget(form.parking, { 'attr' : { 'class': 'js-example-basic-multiple form-select mt-1 mb-2' }}) }}
+                                {{ form_errors(form.parking) }}
+                            </div>
+                        {% endif %}
+                        {% if form.acces_handicape is defined %}
+                            <div class="title-input">
+                                <h2>{{ form_label(form.acces_handicape, 'Accès handicap') }}</h2>
+                                {{ form_widget(form.acces_handicape, { 'attr' : { 'class': 'js-example-basic-multiple form-select mt-1 mb-2' }}) }}
+                                {{ form_errors(form.acces_handicape) }}
+                            </div>
+                        {% endif %}
+                        {% if form.accessible_en_transport_en_commun is defined %}
+                            <div class="title-input">
+                                <h2>{{ form_label(form.accessible_en_transport_en_commun, 'Transports en commun') }}</h2>
+                                {{ form_widget(form.accessible_en_transport_en_commun, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                                {{ form_errors(form.accessible_en_transport_en_commun) }}
+                            </div>
+                        {% endif %}
+                        {% if form.ascenseur is defined %}
+                            <div class="title-input">
+                                <h2>{{ form_label(form.ascenseur, 'Ascenseur') }}</h2>
+                                {{ form_widget(form.ascenseur, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                                {{ form_errors(form.ascenseur) }}
+                            </div>
+                        {% endif %}
+                        <div class="title-input">
+                            <h2>{{ form_label(form.equipments, 'équipement et installations') }}</h2>
+                            {{ form_widget(form.equipments) }}
+                            {{ form_errors(form.equipments) }}
+                        </div>
+                        {% if form.commodite is defined %}
+                            <div class="title-input">
+                                <h2>{{ form_label(form.commodite, 'Commodités') }}</h2>
+                                {{ form_widget(form.commodite, { 'attr' : { 'class': 'js-example-basic-multiple form-select mt-1 mb-2' }}) }}
+                                {{ form_errors(form.commodite) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-7 appointment">
+            <h2>Prise de rendez-vous</h2>
+            <div class="row d-flex justify-content-center d-md-block my-5">
+                <div class="col-auto d-flex align-items-center mb-3">
+                    <h3>{{ form_label(form.website) }}</h3>
+                </div>
+                <div class="col-auto mb-3">
+                    {{ form_widget(form.website, { 'attr' : { 'class': 'form-control h-100 px-5' }}) }}
+                    {{ form_errors(form.website) }}
+                </div>
+                <div class="col-auto button-select">
+                    <input type="checkbox" id="dontknow-website">
+                    <label for="dontknow-website">Je ne sais pas</label>
+                </div>
+            </div>
+            <div class="row rating-table">
+                <h3>Recommandation par thématiques</h3>
+                {% for importanceCriterion in form.practitionerImportanceCriterions %}
+                    {% if importanceCriterion.note is defined %}
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-auto">
+                                    {{ form_widget(importanceCriterion.criterion, { 'attr' : { 'class': 'mb-2' }}) }}
+                                    {{ form_errors(importanceCriterion.criterion) }}
+                                </div>
+                                <div class="col-auto">
+                                    {{ form_widget(importanceCriterion.note) }}
+                                    {{ form_errors(importanceCriterion.note) }}
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        {{ form_widget(importanceCriterion) }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col text-end">
+                    {{ form_label(form.submit, 'Valider') }}
+                    {{ form_widget(form.submit, { 'attr' : { 'class': 'btn btn-primary my-5' }}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>

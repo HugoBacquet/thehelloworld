@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'partiels/flashbag.html.twig' %}
+    <div class="container welcome-patient">
+        <div class="row justify-content-center">
+            <div class="col-lg-2 m-4 text-center">
+                <div class="d-flex flex-column align-items-center welcome-images">
+                    <img src="{{ asset('img/logo-coeur.png') }}" alt="Logo doctavis" />
+                    <img src="{{ asset('img/perso-welcome.png') }}" alt="Logo doctavis" />
+                </div>
+            </div>
+        </div>
+        <div class="row text-center mb-5">
+            <div class="col">
+                <h1>Bienvenue sur doctavis!</h1>
+                <h2>Choisissez un professionnel de santé qui vous ressemble</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col">
+                {{ form_start(form) }}
+
+                <div class="row mb-5">
+                    <div class="col-xxl-3 mb-2 mb-xxl-auto">
+                        <h3 class="fs-4 fw-bold">Je connais ma pathologie </h3>
+                    </div>
+                    <div class="col-lg-9 col-xl-7 col-xxl-6  mb-2 mb-lg-auto">
+                        {{ form_widget(form.pathologies, { 'attr' : { 'class': 'js-example-basic-multiple form-select' }}) }}
+                    </div>
+                    <div class="col-4 col-md-2">
+                        <button class="btn btn-light" id="pathology_btn">Non</button>
+                    </div>
+                </div>
+
+                <div class="row button-select mb-3">
+                    <div class="col-xxl-3 mb-2 mb-xxl-auto">
+                        <h3 class="fs-4 fw-bold">Je cherche une approche </h3>
+                    </div>
+                    <div class="col-md-4 col-xxl-3">
+                        {{ form_widget(attribute(form.specialities,0)) }}
+                        {{ form_label(attribute(form.specialities,0)) }}
+                        <p class="asterisque">*Généraliste, cardiologue, gynècologue</p>
+                    </div>
+                    <div class="col-md-4 col-xxl-3">
+                        {{ form_widget(attribute(form.specialities,1)) }}
+                        {{ form_label(attribute(form.specialities,1)) }}
+                        <p class="asterisque">*Diététicien, psychologue, ostéopathe</p>
+                    </div>
+                    <div class="col-md-4 col-xxl-3">
+                        {{ form_widget(attribute(form.specialities,2)) }}
+                        {{ form_label(attribute(form.specialities,2)) }}
+                        <p class="asterisque">*Hypnothérapeute, sophrologue, naturopathe</p>
+                    </div>
+                </div>
+
+                <div class="row mb-5 location">
+                    <div class="col-12 col-xl-3 offset-xxl-2 fs-4 fw-bold">
+                        {{ form_widget(form.location, {'attr': {'class': 'form-control fs-4 fw-bold mb-2 mb-xl-auto'}}) }}
+                        {{ form_errors(form.location) }}
+                    </div>
+                    <div class="col d-flex align-items-center fs-4 fw-bold">
+                        <div class="row">
+                            <div class="col-12 col-md-auto">
+                                {{ form_label(form.rayon) }}
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.rayon) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5" id="submit_block">
+                    <div class="col text-center">
+                        {{ form_label(form.submit) }}
+                        {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary fw-bold'}}) }}
+                    </div>
+                </div>
+                <div class="row mb-5 invisible" id="partial_submit_block">
+                    <div class="col text-center">
+                        {{ form_label(form.partialSubmit) }}
+                        {{ form_widget(form.partialSubmit, {'attr': {'class': 'btn btn-primary fw-bold'}}) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#pathology_btn').click(function (e) {
+                e.preventDefault()
+                $('#partial_submit_block').removeClass('invisible')
+                $('#submit_block').addClass('invisible')
+                $('#partial_submit_block').insertBefore($('#submit_block'))
+            })
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container ">
+        <div class="row text-center">
+            <div class="col">
+                <h1 class="mt-4 mb-3">Ils sont parfaits pour vous !</h1>
+            </div>
+        </div>
+        {% if results is not empty %}
+        <div class="row justify-content-center">
+            {% for practitioner in results %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card-profile">
+                    <div class="row">
+                        <div class="col-4 text-end">
+                            <img class="img-fluid" src="{{ asset('img/femme.JPG') }}" alt="Photo du praticien">
+                        </div>
+                        <div class="col-8">
+                            <h3>
+                                {% for speciality in practitioner.specialities %}
+                                    {{ speciality }}
+                                {% endfor %}
+                            </h3>
+                            <h4>
+                                {{ practitioner.firstname }} {{ practitioner.lastname }}
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="fs-5 text-center">
+                                {% for temperament in practitioner.temperaments %}
+                                    {{ temperament.name }}
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <a class="btn mx-2" href="{{ path('ask_for_appointment',{'practitionerId' : practitioner.id}) }}">Prendre RDV</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="row mb-5">
+            <div class="col text-end fs-5">
+                <a href="{{ path('contact') }}">Je ne trouve pas le professionnel de santé que je cherche</a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <h2 class="fs-3 fw-bold mb-4">La solidarité comme moyen d'efficacité !</h2>
+                <p class="fs-5 mb-5">Vous connaissez un autre praticien qui n'apparaît pas sur cette liste ?<br />
+                    Participez au projet <span>Doctavis</span>, en recommandant vos meilleurs praticiens.<br />
+                    Et aidez le plus grand nombre à rencontrer comme vous leurs futurs partenaires de santé ☆</p>
+                <div class="row justify-content-center">
+                    <div class="col-sm-7 col-md-6 col-lg-4 col-xxl-3">
+                        <a class="btn btn-primary fw-bold fs-4" href="{{ path('recommend_practitioner') }}">Je recommande un autre praticien</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

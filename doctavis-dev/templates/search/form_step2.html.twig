@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <h1 class="fs-2 text-center mb-5">Choisissiez les critères spécifiques à une consultation en cabinet important pour vous</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-8">
+                {{ form_start(form) }}
+                <div class="row">
+                    {% if form.parking is defined %}
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="title-input">
+                                <h2>{{ form_label(form.parking, "Parking") }}</h2>
+                                {{ form_widget(form.parking, { 'attr' : { 'class' : 'js-example-basic-multiple form-select'}}) }}
+                                {{ form_errors(form.parking) }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if form.acces_handicape is defined %}
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="title-input">
+                                <h2>{{ form_label(form.acces_handicape, "Accès handicap") }}</h2>
+                                {{ form_widget(form.acces_handicape, { 'attr' : { 'class' : 'js-example-basic-multiple form-select'}}) }}
+                                {{ form_errors(form.acces_handicape) }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if form.commodite is defined %}
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="title-input">
+                                <h2>{{ form_label(form.commodite, "Commodités") }}</h2>
+                                {{ form_widget(form.commodite, { 'attr' : { 'class' : 'js-example-basic-multiple form-select'}}) }}
+                                {{ form_errors(form.commodite) }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if form.accessible_en_transport_en_commun is defined %}
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="title-input">
+                                <h2>{{ form_label(form.accessible_en_transport_en_commun, "Accès en transports en commun") }}</h2>
+                                {{ form_widget(form.accessible_en_transport_en_commun, { 'attr' : { 'class' : 'js-example-basic-single form-select'}}) }}
+                                {{ form_errors(form.accessible_en_transport_en_commun) }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if form.ascenseur is defined %}
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="title-input">
+                                <h2>{{ form_label(form.ascenseur, "Ascenseur") }}</h2>
+                                {{ form_widget(form.ascenseur, { 'attr' : { 'class' : 'js-example-basic-single form-select'}}) }}
+                                {{ form_errors(form.ascenseur) }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="title-input">
+                            <h2>{{ form_label(form.equipments, "Equipement et installations") }}</h2>
+                            {{ form_widget(form.equipments, { 'attr' : { 'class' : 'js-example-basic-multiple form-select'}}) }}
+                            {{ form_errors(form.equipments) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_widget(form.submit_return, { 'attr' : { 'class': 'btn btn-lg btn-outline-secondary my-3 shadow-none' }}) }}
+                </div>
+                <div class="col text-end">
+                    {{ form_label(form.submit) }}
+                    {{ form_widget(form.submit, { 'attr' : { 'class': 'btn btn-primary' }}) }}
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{#{% block javascripts %}#}
+{#    <script>#}
+{#        function registerData() {#}
+{#        }#}
+{#    </script>#}
+{#{% endblock %}#}

@@ -1,0 +1,15 @@
+{# DO THIS: the '!' symbol tells Symfony to extend from the original template #}
+{% extends '@!EasyAdmin/layout.html.twig' %}
+
+{% block page_actions_wrapper %}
+    {{ parent() }}
+
+    {% if pageName == 'index' %}
+    <div class="button-action ml-2 mr-2">
+        <a class="btn btn-lg btn-outline-secondary my-3" href="{{ path('export', {'entity': 'patient'}) }}">
+            <i class="fa fa-download"></i>
+            Export
+        </a>
+    </div>
+    {% endif %}
+{% endblock page_actions_wrapper %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 m-5 text-center">
+                <div class="shadowed-disc mb-4">
+                    <img src="{{ asset('img/logo-coeur.png') }}" alt="Logo doctavis" />
+                </div>
+                <h1 class="mb-4">Un de nos outils vous intéresse ?</h1>
+                <p class="fs-4 fw-bold">Contactez-nous, nous ferons le nécessaire au plus vite !</p>
+                <p class="fs-5 fw-bold">contact@doctavis.com</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <a href="{{ path('dashboard') }}" class="fs-5 fw-bold">Menu principal</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

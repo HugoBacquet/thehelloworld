@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        {% include 'partiels/flashbag.html.twig' %}
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <h1>Mon espace professionel</h1>
+            </div>
+        </div>
+        <div class="row justify-content-around practitioner-actions">
+            <div class="col-lg-3 p-4">
+                <div class="row">
+                    <div class="image-bloc">
+                        <img src="{{ asset('img/stylo.png') }}" alt="Stylo">
+                    </div>
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary fs-2" href="{{ path('practitioner_edit_step1') }}">Modifier mon profil</a>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="row">
+                    <div class="image-bloc">
+                        <img src="{{ asset('img/carnet.PNG') }}" alt="Carnet de notes">
+                    </div>
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary fs-2" href="{{ path('practitioner_profile') }}">Voir mon profil</a>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="row">
+                    <div class="image-bloc">
+                        <img src="{{ asset('img/stars-screen.PNG') }}" alt="5 étoiles sur un écran">
+                    </div>
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary fs-2" href="{{ path('ereputation_index') }}">Gérer ma e-réputation</a>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-7 text-center fw-bold">
+                <a href="{{ path('unregister') }}">Se désinscrire</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

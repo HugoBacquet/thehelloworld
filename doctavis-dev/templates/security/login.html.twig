@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 m-5 text-center">
+                <div class="shadowed-disc mb-4">
+                    <img src="{{ asset('img/logo-coeur.png') }}" alt="Logo doctavis" />
+                </div>
+                <h1 class="mb-4">Bienvenue sur Doctavis !</h1>
+                <p class="fs-4">La plateforme <span class="fw-bolg">sécurisée</span> qui vous fait gagner <span class="fw-bold">qualitativement</span> en visibilité.</p>
+                <p class="fs-4">Tout en profitant de solutions <span class="fw-bold">professionnelles d’e-réputation</span>.</p>
+                <p class="fs-4">Offrant, ainsi, une meilleure <span class="fw-bold">orientation patients, diminution des visites inutiles, abandons ou mauvaises prises de traitements</span>.</p>
+            </div>
+        </div>
+        <form method="post">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 offset-lg-2">
+                    <div class="row">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <div class="col-lg-8">
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Adresse mail" class="form-control fs-5 fw-bold mb-4" required autofocus>
+                            <input type="password" name="password" id="inputPassword" placeholder="Mot de passe" class="form-control fs-5 fw-bold mb-5" required>
+
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}"
+                            >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex align-items-center mb-5">
+                            <input class="btn btn-primary me-5" type="submit" value="Connexion">
+                            <a class="fs-5" href="{{ path('app_register') }}">Je n'ai pas encore de compte</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

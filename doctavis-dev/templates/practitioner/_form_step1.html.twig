@@ -1,0 +1,96 @@
+<div class="container recommend">
+    <div class="row">
+        <div class="col">
+            <h1>Informations générales - <span>Etape 1/{% if new == true %}2{% else %}3{% endif %}</span></h1>
+            {{ form_start(form) }}
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    {{ form_widget(form.lastname, { 'attr' : { 'placeholder': 'Nom', 'class': 'form-control mb-2' }}) }}
+                    {{ form_errors(form.lastname) }}
+                </div>
+                <div class="col-sm-3">
+                    {{ form_widget(form.firstname, { 'attr' : { 'placeholder': 'Prénom', 'class': 'form-control mb-2' }}) }}
+                    {{ form_errors(form.firstname) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    {{ form_widget(form.address) }}
+                    {{ form_errors(form.address) }}
+                </div>
+                <div class="col-sm-4">
+                    {{ form_widget(form.postalCode) }}
+                    {{ form_errors(form.postalCode) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-5">
+                    {{ form_widget(form.email) }}
+                    {{ form_errors(form.email) }}
+                </div>
+                <div class="col-sm-5">
+                    {{ form_widget(form.phoneNumber) }}
+                    {{ form_errors(form.phoneNumber) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-5 d-flex align-items-center">
+                    <h2>{{ form_label(form.website) }}</h2>
+                </div>
+                <div class="col-sm-5">
+                    {{ form_widget(form.website) }}
+                    {{ form_errors(form.website) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1 d-flex align-items-center">
+                    <h2>{{ form_label(form.sex) }}</h2>
+                </div>
+                <div class="col-6 sex">
+                    <div class="row button-select mb-3">
+                    {{ form_widget(form.sex.0, { 'attr' : { 'class': 'form-check mb-2' }}) }}
+                    {{ form_label(form.sex.0, ' ') }}
+                    {{ form_widget(form.sex.1, { 'attr' : { 'class': 'form-check mb-2' }}) }}
+                    {{ form_label(form.sex.1, ' ') }}
+                    {{ form_widget(form.sex.2, { 'attr' : { 'class': 'form-check mb-2' }}) }}
+                    {{ form_label(form.sex.2) }}
+                    {{ form_errors(form.sex) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1 accept_conditions">
+                    {{ form_widget(form.doctavisNews) }}
+                    {{ form_errors(form.doctavisNews) }}
+                </div>
+                <div class="col-9 label_conditions">
+                    {{ form_label(form.doctavisNews) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1 accept_conditions">
+                    {{ form_widget(form.associatesNews) }}
+                    {{ form_errors(form.associatesNews) }}
+                </div>
+                <div class="col-9 label_conditions">
+                    {{ form_label(form.associatesNews) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-end">
+                    {{ form_label(form.submit) }}
+                    {{ form_widget(form.submit) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-md-2 col-xxl-1">
+            <div class="row h-100 align-items-end">
+                <div class="col">
+                    <img src="{{ asset('img/perso-crayon.PNG') }}" alt="Un personnage dessiné tient un crayon géant" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

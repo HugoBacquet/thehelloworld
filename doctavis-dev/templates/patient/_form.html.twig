@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row justify-content-center first-patient-result">
+        <div class="col-sm-9">
+            <div class="row justify-content-center">
+                <div class="col-lg-2 mt-5 mb-1 text-center">
+                    <div class="d-flex flex-column align-items-center welcome-images">
+                        <img src="{{ asset('img/logo-coeur.png') }}" alt="Logo doctavis" />
+                        <img src="{{ asset('img/perso-welcome.png') }}" alt="Logo doctavis" />
+                    </div>
+                </div>
+                {% if count > 0 %}
+                    <h1 class="fs-1 mt-1 mb-5 text-center">Vous avez un match !</h1>
+                    <h2 class="fs-3 mb-3 text-center fw-bold">Indiquez votre adresse mail pour le(s) découvrir</h2>
+                {% else %}
+                    <h1 class="fs-1 mt-1 mb-5 text-center">Nous n'avons pas encore de practiciens qui correspondent à votre demande</h1>
+                    <h2 class="fs-3 mb-3 text-center fw-bold">Laissez nous votre adresse mail, nous vous enverrons un mail dès que vous aurez un match</h2>
+                {% endif %}
+            </div>
+
+            <div class="row">
+                {{ form_start(form) }}
+                <div class="col">
+                    {{ form_widget(form.email, { 'attr' : { 'class': 'form-control mb-5 fs-5 fw-bold' }}) }}
+                    {{ form_errors(form.email) }}
+                    <p class="d-flex align-items-start">
+                        {{ form_widget(form.doctavisNews) }}
+                        {{ form_label(form.doctavisNews) }}
+                        {{ form_errors(form.doctavisNews) }}
+                    </p>
+                    <p class="d-flex align-items-start mb-4">
+                        {{ form_widget(form.associatesNews) }}
+                        {{ form_label(form.associatesNews) }}
+                        {{ form_errors(form.associatesNews) }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-end">
+                    {{ form_label(form.submit) }}
+                    {{ form_widget(form.submit, { 'attr' : { 'class': 'btn btn-primary fw-bold mt-3 mb-5' }}) }}
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container ereputation-tools">
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <h1>Nos outils professionnels pour gérer votre e-réputation en toute simplicité !</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-11">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="btn btn-light" href="{{ path('contact_outils') }}">Outils d'alerte en cas d'avis négatifs</a>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <a class="btn btn-light float-right" href="{{ path('contact_outils') }}">Aide à la gestion ou création de réseaux sociaux</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="btn btn-light" href="{{ path('contact_outils') }}">Aide à la modération</a>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <a class="btn btn-light float-right" href="{{ path('contact_outils') }}">Création de site internet</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="btn btn-light" href="{{ path('contact_outils') }}">Modération</a>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <a class="btn btn-light float-right" href="{{ path('contact_outils') }}">Accompagnement ou gestion du référencement SEO /SEA</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="btn btn-light" href="{{ path('contact_outils') }}">Gestion des réseaux sociaux</a>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <a class="btn btn-light float-right" href="{{ path('contact_outils') }}">Analyse de votre e-réputation globale</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="btn btn-light float-right" href="{{ path('contact_outils') }}">Production de contenus audiovisuels</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <a href="{{ path('dashboard') }}" class="fs-5 mb-5">Menu principal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

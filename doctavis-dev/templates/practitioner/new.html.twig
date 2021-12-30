@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if step == 1 %}
+        {% include 'practitioner/_form_step1.html.twig' %}
+    {% else %}
+        {% include 'practitioner/_form_step2.html.twig' %}
+    {% endif %}
+{% endblock %}

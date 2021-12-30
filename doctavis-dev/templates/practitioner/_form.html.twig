@@ -1,0 +1,99 @@
+<div class="container recommend">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-12 col-sm-auto">
+                    <h1>Informations générales<span class="d-none d-sm-inline"> - </span></h1>
+                </div>
+                <div class="col d-flex align-items-center">
+                    <h2>étape 1/2</h2>
+                </div>
+            </div>
+
+            {{ form_start(form) }}
+            <div class="row mb-3">
+                <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3">
+                    {{ form_widget(form.lastname, { 'attr' : { 'placeholder': 'Nom', 'class': 'form-control mb-2' }}) }}
+                    {{ form_errors(form.lastname) }}
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3">
+                    {{ form_widget(form.firstname, { 'attr' : { 'placeholder': 'Prénom', 'class': 'form-control mb-2' }}) }}
+                    {{ form_errors(form.firstname) }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-6 col-xl-4 d-flex align-items-center">
+                    <h2>{{ form_label(form.sex) }}</h2>
+                </div>
+                <div class="col-lg-6 sex text-center text-lg-start">
+                    {{ form_widget(form.sex.0, { 'attr' : { 'class': 'form-check mb-2' }}) }}
+                    {{ form_label(form.sex.0, ' ') }}
+                    {{ form_widget(form.sex.1, { 'attr' : { 'class': 'form-check mb-2' }}) }}
+                    {{ form_label(form.sex.1, ' ') }}
+                    {{ form_widget(form.sex.2, { 'attr' : { 'class': 'form-check mb-2' }}) }}
+                    {{ form_label(form.sex.2, 'Non binaire') }}
+                    {{ form_errors(form.sex) }}
+                </div>
+            </div>
+            <div class="row button-select mb-3">
+                <div class="col-xxl-3 mb-2 mb-xxl-auto d-flex align-items-center">
+                    <h2>Mon praticien est un...</h2>
+                </div>
+                <div class="col-md-4 col-xxl-2">
+                    {{ form_widget(attribute(form.specialities,20)) }}
+                    {{ form_label(attribute(form.specialities,20)) }}
+                    <p class="asterisque">*Généraliste, cardiologue, gynècologue</p>
+                </div>
+                <div class="col-md-4 col-xxl-2">
+                    {{ form_widget(attribute(form.specialities,21)) }}
+                    {{ form_label(attribute(form.specialities,21)) }}
+                    <p class="asterisque">*Diététicien, psychologue, ostéopathe</p>
+                </div>
+                <div class="col-md-4 col-xxl-2">
+                    {{ form_widget(attribute(form.specialities,22)) }}
+                    {{ form_label(attribute(form.specialities,22)) }}
+                    <p class="asterisque">*Hypnothérapeute, sophrologue, naturopathe</p>
+                </div>
+                <div class="col-md-4 col-xxl-2">
+                    <input type="checkbox" id="dontknow-speciality">
+                    <label for="dontknow-speciality">Je ne sais pas</label>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3 col-lg-2 d-flex align-items-center">
+                    <h2>{{ form_label(form.postalCode) }}</h2>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    {{ form_widget(form.postalCode, { 'attr' : { 'placeholder': 'Code postal', 'class': 'form-control mb-2' }}) }}
+                    {{ form_errors(form.postalCode) }}
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 button-select">
+                    <input type="checkbox" id="dontknow-postalCode">
+                    <label for="dontknow-postalCode">Je ne sais pas</label>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-xl-5 col-xxl-4 d-flex align-items-center">
+                    <h2>{{ form_label(form.unmappedPathologies) }}</h2>
+                </div>
+                <div class="col-sm-7 col-lg-3 d-flex align-items-center">
+                    {{ form_widget(form.unmappedPathologies) }}
+                    {{ form_errors(form.unmappedPathologies) }}
+                </div>
+                <div class="col-sm-5 col-lg-3 button-select">
+                    <input type="checkbox" id="dontknow-pathology">
+                    <label for="dontknow-pathology">Je ne sais pas</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-end">
+                    {{ form_label(form.submit) }}
+                    {{ form_widget(form.submit, { 'attr' : { 'class': 'btn btn-primary px-5 my-5' }}) }}
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+

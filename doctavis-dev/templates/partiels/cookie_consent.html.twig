@@ -1,0 +1,54 @@
+<div class="cookie" id="cookie_bar">
+    <div class="sixteen wide column">
+        <div class="ui two column centered grid">
+            <div class="bandeau">
+                Nous utilisons des cookies afin, essentiellement, d’analyser notre audience et la performance de notre site.<br />
+{#                Nous vous invitons à consulter notre Politique d’utilisation des cookies#}
+{#                <span>#}
+{#                    <n-link :to="$i18n.path('mentions-legales')">ici</n-link>#}
+{#                </span>.#}
+                Ces cookies ne sont activés que si vous y consentez.
+                <br>
+                <button onclick="persistTrue()">Accepter</button>
+                <button onclick="persistFalse()">Refuser</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style lang="scss">
+    .cookie {
+        position: fixed;
+        z-index: 15;
+        bottom: 0;
+        width: 100%;
+        line-height: 15px;
+        background-color: #353B9D;
+        font-size: 15px;
+    }
+
+    .bandeau {
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+        color: #ffffff;
+        padding: 10px;
+    }
+</style>
+
+<script>
+    const cookieDiv = document.getElementById('cookie_bar');
+
+    if (localStorage.getItem('accept_cookie')) {
+        cookieDiv.setAttribute('style', 'display:none');
+    }
+
+    function persistTrue() {
+        localStorage.setItem('accept_cookie', 'true');
+        cookieDiv.setAttribute('style', 'display:none');
+    }
+    function persistFalse() {
+        localStorage.setItem('accept_cookie', 'false');
+        cookieDiv.setAttribute('style', 'display:none');
+    }
+</script>

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-2 m-5 text-center">
+                <div class="d-flex flex-column align-items-center welcome-images">
+                    <img src="{{ asset('img/logo-coeur.png') }}" alt="Logo doctavis" />
+                    <img src="{{ asset('img/perso-welcome.png') }}" alt="Logo doctavis" />
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-9 mb-5 text-center">
+                <h1 class="mt-0 mb-4">Bienvenue dans l'aventure Doctavis !</h1>
+                <p class="fs-4">Votre profil est maintenant rempli à 30%</p>
+                <p class="fs-4">Pour rendre votre profil plus attractif, informez davantage vos futurs patients !</p>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-5">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href="{{ path('practitioner_edit_step3') }}" class="btn btn-primary m-auto fs-4 fw-bold">Je complète mon profil</a>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-end">
+                        <a href="{{ path('practitioner_profile') }}" class="fs-5 fw-bold">Voir mon profil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

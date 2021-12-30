@@ -1,0 +1,331 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'partiels/flashbag.html.twig' %}
+    {% if practitioner.paymentMethods is empty %}
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-5 short-profile">
+                    <div class="row mb-5">
+                        <div class="col-5 text-center">
+                            <img class="img-fluid practitioner-face" src="{{ asset('img/femme.JPG') }}"
+                                 alt="Photo de Rosaline Pioux">
+                        </div>
+                        <div class="col-7 d-flex flex-column align-items-start justify-content-center">
+                            <h1 class="fs-2 fw-bold m-0">
+                                {% for speciality in practitioner.specialities %}
+                                    {% if speciality.level == 2 %}
+                                        {{ speciality.name }}
+                                    {% endif %}
+                                {% endfor %}
+                            </h1>
+                            <h2 class="fs-3 fw-bold">{{ practitioner.firstname }} {{ practitioner.lastname }}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center text-xl-start">
+                            <button class="btn btn-secondary fs-4 mb-4">Prise de rendez-vous</button>
+                        </div>
+                    </div>
+                    <div class="p-2 mb-5">
+                        <p class="fw-bold fs-4 text-center text-xl-start">
+                            Prise de rendez-vous en ligne
+                            <a href="{{ practitioner.website }}" target="_blank">
+                                <img class="logo-doctolib" src="{{ asset('img/logo-doctolib.png') }}" alt="logo doctolib"/>
+                            </a>
+                        </p>
+                        <p class="fs-4 mb-4 text-center text-xl-start"><span class="fw-bold">Par téléphone:</span> {{ practitioner.phoneNumber }}</p>
+                        <p class="fs-4 mb-4 text-center text-xl-start"><span class="fw-bold">Par email:</span> {{ practitioner.email }}</p>
+                        <iframe scrolling="no" marginheight="0" marginwidth="0"
+                                src="https://maps.google.com/maps?width=100%25&amp;height=200&amp;hl=en&amp;q={{ ('10 rue du Lombard' ~ ' ' ~ 59800 ~ ' ' ~ 'Lille') | url_encode }}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                width="100%" height="300" frameborder="0">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-lg-7 d-flex flex-column justify-content-between">
+                    <div class="row mb-5">
+                        <div class="col-12 col-xxl-11 rating-table">
+                            <h3><span class="fw-bold text-center">X</span> personnes ont recommandé <span
+                                        class="fw-bold">{{ practitioner.firstname }} {{ practitioner.lastname }}</span>
+                            </h3>
+                            <ul class="list-unstyled fs-4">
+                                {% if importanceCriterions is defined %}
+                                    {% for key, criterions in importanceCriterions %}
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-12 col-xl-7">
+                                                    <span>{{ key }}</span>
+                                                </div>
+                                                <div class="col-12 col-lg-5 text-lg-center">
+                                                    {% if criterions < 1 %}
+                                                        (non noté)
+                                                    {% else %}
+                                                        {% for i in 1..(criterions|round(0, 'ceil')) %}
+                                                            <img class="logo-doctolib" src="{{ asset('img/etoile.png') }}" alt="logo doctolib"/>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-xl-5 col-xxl-4 text-center mx-lg-4 text-center mx-lg-4">
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <a class="btn btn-primary fs-4 fw-bold mb-4"
+                                       href="{{ path('practitioner_edit_step1') }}">Je complète mon profil</a>
+                                    <a class="fw-bold" href="{{ path('dashboard') }}">Menu principal</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container-fluid show">
+            <div class="row">
+                <div class="col-md-7 col-xl-4 col-xxl-3 p-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row p-3 intro">
+                                <div class="col-sm-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-7 col-sm-12">
+                                            <img class="img-fluid" src="{{ asset('img/placeholder-profile.jpg') }}"
+                                                 alt="Portrait du professionnel de santé">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8 text-center">
+                                    <h1 class="fs-3">
+                                        {% for speciality in practitioner.specialities %}
+                                            {% if speciality.level == 2 %}
+                                                {{ speciality.name }}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </h1>
+                                    <h2>{{ practitioner.firstname }} {{ practitioner.lastname }}</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="fs-5">{% for temperament in practitioner.temperaments %}
+                                        #{{ temperament.name }}
+                                    {% endfor %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h2 class="appointment-title">Prise de rendez-vous</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <p class="fs-5 fw-bold p-2">Prise de rendez-vous en ligne</p>
+                        </div>
+                        <div class="col-3">
+                            <a href="{{ practitioner.website }}" target="_blank">
+                                <img class="w-100" src="{{ asset('img/logo-doctolib.png') }}" alt="Logo Doctolib" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <p class="fs-5 fw-bold p-2 m-0">Par téléphone</p>
+                        </div>
+                        <div class="col-auto d-flex align-items-center">
+                            <p class="m-0">{{ practitioner.phoneNumber }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col p-3">
+                            <p class="border p-2">{{ (practitioner.address ~ ' ' ~ practitioner.postalCode ~ ' ' ~ practitioner.city) }}</p>
+                            <div class="embed-responsive">
+                                <iframe scrolling="no" marginheight="0" marginwidth="0"
+                                        src="https://maps.google.com/maps?width=100%25&amp;height=200&amp;hl=en&amp;q={{ (practitioner.address ~ ' ' ~ practitioner.postalCode ~ ' ' ~ practitioner.city) | url_encode }}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                        width="100%" height="300" frameborder="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-xl-4 col-xxl-2 p-3 photos">
+                    <div>
+                        <img class="w-100 mb-3" src="{{ asset('img/placeholder-cabinet.png') }}" alt="Logo doctavis" />
+                    </div>
+                    <div>
+                        <img class="w-100 mb-3" src="{{ asset('img/placeholder-cabinet.png') }}" alt="Logo doctavis" />
+                    </div>
+                    <div>
+                        <img class="w-100 mb-3" src="{{ asset('img/placeholder-cabinet.png') }}" alt="Logo doctavis" />
+                    </div>
+                    <div>
+                        <img class="w-100 mb-3" src="{{ asset('img/placeholder-cabinet.png') }}" alt="Logo doctavis" />
+                    </div>
+                </div>
+                <div class="col-md-5 col-xl-4 col-xxl-2 p-3">
+                    <div class="criterions main position-relative">
+                        <div class="title-input">
+                            <h2>Langues parlées</h2>
+                            <p>{% for language in practitioner.languages %}
+                                    <span>{{ language.name }} </span>
+                            </p>{% endfor %}
+                        </div>
+                        <div class="title-input">
+                            <h2>Sexe</h2>
+                            <p>{{ practitioner.sex }}</p>
+                        </div>
+                        <div class="title-input">
+                            <h2>Tiers payant</h2>
+                            <p>{{ practitioner.thirdPartyPayment ? 'Oui' : 'Non'  }}</p>
+                        </div>
+                        <div class="title-input">
+                            <h2>Moyens de paiement</h2>
+                            <p>{% for paymentMethod in practitioner.paymentMethods %}
+                                <span>{{ paymentMethod }} </span>
+                            </p>{% endfor %}
+                        </div>
+                        <div class="title-input">
+                            <h2>Prise en charge</h2>
+                            <p>{{ practitioner.sector }}</p>
+                        </div>
+                        <div class="title-input">
+                            <h2>CMU acceptée</h2>
+                            <p>{{ practitioner.isCMUAccepted ? 'Oui' : 'Non'}}</p>
+                        </div>
+                        <div class="title-input">
+                            <h2>Format de consultation</h2>
+                            <div>
+                                {% for consultationType in practitioner.consultationTypes %}
+                                    {% if consultationType == "En cabinet" %}
+                                        <span class="cabinet-title">
+                                            {{ consultationType }}
+                                        <div class="criterions additional">
+                                            <div class="title-input">
+                                                <h4>Parking</h4>
+                                                <ul>
+                                                    {% for accessibilityCriterion in practitioner.accessibilityCriterions %}
+                                                        {% if accessibilityCriterion.parent == "PARKING" %}
+                                                            <li>{{ accessibilityCriterion.name }}</li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <div class="title-input">
+                                                <h4>Accès handicap</h4>
+                                                <ul>
+                                                    {% for accessibilityCriterion in practitioner.accessibilityCriterions %}
+                                                        {% if accessibilityCriterion.parent == "ACCES HANDICAPE" %}
+                                                            <li>{{ accessibilityCriterion.name }}</li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <div class="title-input">
+                                                <h4>Accès en transports en commun</h4>
+                                                <ul>
+                                                    {% for accessibilityCriterion in practitioner.accessibilityCriterions %}
+                                                        {% if accessibilityCriterion.parent == "ACCESSIBLE EN TRANSPORT EN COMMUN" %}
+                                                            <li>{{ accessibilityCriterion.name }}</li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <div class="title-input">
+                                                <h4>Ascenseur</h4>
+                                                <ul>
+                                                    {% for accessibilityCriterion in practitioner.accessibilityCriterions %}
+                                                        {% if accessibilityCriterion.parent == "ASCENSEUR" %}
+                                                            <li>{{ accessibilityCriterion.name }}</li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <div class="title-input">
+                                                <h4>Equipement et installations</h4>
+                                                <ul>
+                                                    {% for equipment in practitioner.equipments %}
+                                                        <li>{{ equipment.name }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            <div class="title-input">
+                                                <h4>Commodités</h4>
+                                                <ul>
+                                                    {% for accessibilityCriterion in practitioner.accessibilityCriterions %}
+                                                        {% if accessibilityCriterion.parent == "COMMODITE" %}
+                                                            <li>{{ accessibilityCriterion.name }}</li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                            </span>
+                                    {% else %}
+                                        <span>{{ consultationType }} </span>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="title-input">
+                            <h2>Délais de prise de rendez-vous</h2>
+                            <p>{{ practitioner.waitingTime }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 col-xl-12 col-xxl-5 p-3">
+                    <div class="row rating-table">
+                        <h3>Recommandation par thématiques</h3>
+                        {% for key, value in importanceCriterions %}
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12 col-md-auto d-flex align-items-center">
+                                            <span>{{ key}}</span>
+                                        </div>
+                                        <div class="col-12 col-md-auto d-flex align-items-center">
+                                            {% if value == 0 %}
+                                                <span class="fs-5">(Pas encore noté)</span>
+                                            {% else %}
+                                                {% for i in range(1, value) %}
+                                                    <img src="{{ asset('img/etoile.png') }}" alt="Petite étoile jaune" />
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <div class="row text-center">
+                            <h3 class="fw-bold m-3">Expertise liée aux identités culturelles</h3>
+                            <ul class="list-unstyled fs-3">
+                                {% for additionalCriterion in practitioner.additionalCriterions %}
+                                    <li>{{ additionalCriterion }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% if not app.user %}
+                            <div class="row text-center my-5">
+                                <div class="col">
+                                    <p>Vous avez déjà été traité par ce praticien ?</p>
+                                    <a class="btn btn-primary" href="{{ path('note_practitioner_step2', {'practitioner' : practitioner.id }) }}">Recommander ce praticien</a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="row justify-content-center my-5">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <a href="{{ path('practitioner_edit_step1') }}" class="btn btn-primary">Modifier mon profil</a>
+                                    </div>
+                                    <div class="row text-center">
+                                        <a href="{{ path('dashboard') }}">Menu principal</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="fs-2 my-5">Choisissez les critères importants pour vous</h1>
+            </div>
+        </div>
+        {{ form_start(form) }}
+        <div class="row criteres-importants">
+            <div class="col-xl-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="image-bloc">
+                            <img src="{{ asset('img/calpin.png') }}" alt="Calepin" />
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.language) }}</h2>
+                            {{ form_widget(form.language, { 'attr' : { 'class': 'js-example-basic-multiple form-select' }}) }}
+                            {{ form_errors(form.language) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.sex) }}</h2>
+                            {{ form_widget(form.sex, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.sex) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="image-bloc">
+                            <img src="{{ asset('img/piece-tenue.PNG') }}" alt="Une pièce tenue dans une main" />
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.isPayingTiers) }}</h2>
+                            {{ form_widget(form.isPayingTiers, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.isPayingTiers) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.paymentMethods) }}</h2>
+                            {{ form_widget(form.paymentMethods) }}
+                            {{ form_errors(form.paymentMethods) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.sector) }}</h2>
+                            {{ form_widget(form.sector, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.sector) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.isCMUAccepted) }}</h2>
+                            {{ form_widget(form.isCMUAccepted, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.isCMUAccepted) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="image-bloc">
+                            <img src="{{ asset('img/stylo.png') }}" alt="Un stylo tenu dans une main" />
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.waitingTime) }}</h2>
+                            {{ form_widget(form.waitingTime, { 'attr' : { 'class': 'form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.waitingTime) }}
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.consultationType) }}</h2>
+                            {{ form_widget(form.consultationType, { 'attr' : { 'class': 'js-example-basic-multiple form-select mt-1 mb-2' }}) }}
+                            {{ form_errors(form.consultationType) }}
+                        </div>
+                        <div class="visually-hidden">
+                            {{ form_widget(form.submitAdditionnal) }}) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="image-bloc">
+                            <img src="{{ asset('img/culture.png') }}" alt="Un stylo tenu dans une main" />
+                        </div>
+                        <div class="title-input">
+                            <h2>{{ form_label(form.additionalCriterions) }}</h2>
+                            {{ form_widget(form.additionalCriterions) }}
+                            {{ form_errors(form.additionalCriterions) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-end">
+                    {{ form_label(form.submit) }}
+                    {{ form_widget(form.submit, { 'attr' : { 'class': 'btn btn-primary fw-bold' }}) }}
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

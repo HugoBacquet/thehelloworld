@@ -1,0 +1,52 @@
+{% extends 'base_without_header.html.twig' %}
+{% block body %}
+    <div class="container-fluid recommend-known">
+        <div class="row">
+           <div class="col-xl-2 text-center text-xl-end">
+               <img src="{{ asset('img/perso-welcome.png') }}" alt="Logo doctavis" />
+           </div>
+            <div class="col-xl-9 col-xxl-8">
+                <div class="row">
+                    <div class="col text-center text-xl-start">
+                        <h1>
+                            {% for speciality in specialities %}
+                                {% if speciality.level == 2 %}
+                                    {{ speciality.name }}
+                                {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <h2>{{ firstname }} {{ lastname }}</h2>
+                    </div>
+                </div>
+                {{ form_start(form) }}
+                <div class="row mb-5">
+                    <div class="col-lg-10 offset-lg-1 rating-table">
+                        {% for importanceCriterion in form.practitionerImportanceCriterions %}
+                            {% if importanceCriterion.note is defined %}
+                                <div class="row">
+                                    <div class="col w-100 p-0 px-sm-3">
+                                        {{ form_widget(importanceCriterion.criterion) }}
+                                        {{ form_errors(importanceCriterion.criterion) }}
+                                    </div>
+                                    <div class="col-12 col-md-auto">
+                                        {{ form_widget(importanceCriterion.note) }}
+                                        {{ form_errors(importanceCriterion.note) }}
+                                    </div>
+                                </div>
+                            {% else %}
+                                {{ form_widget(importanceCriterion) }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        {{ form_label(form.submit) }}
+                        {{ form_widget(form.submit, { 'attr' : { 'class': 'btn btn-primary' }}) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

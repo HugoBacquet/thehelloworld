@@ -1,0 +1,583 @@
+@font-face {
+    font-family: "Malgun Gothic";
+    src: url('../fonts/malgun.ttf') format("truetype");
+}
+
+/*ELEMENTS*/
+/*global elements*/
+body {
+    font-family: 'Malgun Gothic', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background-color: #f4f1f8;
+}
+.container-fluid {
+    width: 98%;
+}
+h1 {
+    color: #4b49da;
+    font-weight: 600;
+    margin: auto;
+}
+a {
+    text-decoration: none;
+    color: #4E52D1;
+}
+
+/*form elements*/
+.form-control, .form-select {
+    border-radius: 18px;
+    box-shadow: 7px 3px 6px #00000029;
+    color: #56564A;
+    opacity: 0.51;
+    text-align: center;
+}
+.form-select .select2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #56564A;
+    opacity: 0.5;
+}
+/*title inside input bloc*/
+.title-input {
+    background-color: #FFFFFF;
+    border-radius: 18px;
+    box-shadow: 7px 3px 6px #00000029;
+    margin: 1.5em;
+}
+.title-input h2, .title-input h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #484B9A;
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0;
+}
+.title-input h2 label:first-letter {
+    text-transform: uppercase;
+}
+
+/*border on selected choice*/
+.button-select input {
+    display: none;
+}
+.button-select label {
+    border-radius: 18px;
+    background-color: #FFFFFF;
+    box-shadow: 7px 3px 6px #00000029;
+    padding: 0.6em;
+    text-align: center;
+    border: none;
+    font-size: 1.4rem;
+    height: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+.right{
+   text-align: right;
+}
+
+.button-select input[type="checkbox"]:checked+label {
+    box-shadow: 0 0 0 4pt #4B48D0;
+}
+
+.btn {
+    border-radius: 18px;
+    box-shadow: 7px 3px 6px #00000029;
+    text-align: center;
+    border: none;
+}
+
+.btn-primary {
+    box-shadow: 0 3px 6px #00000029;
+    background-color: hsl(238.2,58.7%,56.3%);
+    font-size: 1.2em;
+    padding: 0.6em 2em;
+}
+.btn-primary:hover {
+    background-color: hsl(238.2,58.7%,51.3%);
+    border: none;
+}
+
+.btn-secondary {
+    color: #0D0D0D;
+    background-color: hsl(0,0%,83.5%);
+    width: 90%;
+    margin: auto;
+    font-weight: 600;
+}
+.btn-secondary:hover {
+    color: #0D0D0D;
+    background-color: hsl(0,0%,78.5%);
+}
+
+.btn-light {
+    width: 90%;
+}
+
+/*STYLE ELEMENTS*/
+
+/*shadowed disc*/
+.shadowed-disc {
+    background-color: #ffffff;
+    width: 245px;
+    height: 240px;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px 0 #00000029;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.shadowed-disc img {
+    width: 151px;
+    height: 124px;
+}
+
+/*card-profile*/
+.card-profile {
+    background-color: #fff;
+    border-radius: 46px;
+    box-shadow: 0 3px 6px #00000029;
+    padding: 1em;
+    margin: 1em;
+}
+.card-profile img {
+    max-width: 60px;
+    max-height: 60px;
+}
+.card-profile h3 {
+    font-size: 1.4em;
+    color: #4B49DA;
+    font-weight: 600;
+}
+.card-profile h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.card-profile a {
+    color: #4B49DA;
+    background-color: #babced;
+    border-radius: 13px;
+    font-weight: 600;
+    box-shadow: 0 3px 6px #00000029;
+}
+
+/*rating stars table*/
+.rating-table {
+    background-color: #8E8CE6;
+    border-radius: 39px;
+    color: #fff;
+    padding: 1em 2em;
+}
+.rating-table >div {
+    display: flex;
+    align-items: center;
+}
+.rating-table h3 {
+    background-color: #ffffff;
+    color: #8E8CE6;
+    border-radius: 28px;
+    padding: 0.5em;
+    text-align: center;
+}
+.rating-table ul {
+    padding: 0 1em;
+}
+.rating-table img {
+    width: 25px;
+}
+.rating-table select, .rating-table span {
+    border: none;
+    background-color: transparent;
+    appearance: none;
+    width: 100%;
+    color: #fff;
+    font-size: 2em;
+    margin: 0.5em;
+}
+
+/*astérisque*/
+.asterisque {
+    font-size: 0.8rem;
+    margin-top: 0.3em;
+    color: #56564A;
+    opacity: 70%;
+}
+
+/*bloc image*/
+.image-bloc {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-bloc img {
+    max-height: 75%;
+    max-width: 75%;
+}
+
+/*profile picture*/
+.profile-picture {
+    max-width: 100%;
+    border-radius: 45%;
+}
+
+/*main and additional criterions*/
+.criterions {
+    border-radius: 39px;
+    padding: 0.3em 0;
+    margin-bottom: 2rem;
+}
+.criterions h2 {
+    font-weight: 600;
+}
+.criterions.main {
+    background-color: #8E8CE6;
+}
+.criterions.additional {
+    background-color: #c6c3ec;
+}
+.criterions.additional > h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1em;
+}
+
+/*header*/
+header img {
+    height: 60px;
+}
+@media (min-width: 576px) {
+    header img {
+        height: 85px;
+    }
+}
+header a {
+    color: #514D4D;
+    font-size: 20px;
+}
+header a:hover {
+    color: #4E52D1;
+}
+
+/*PAGES*/
+/*welcome patient*/
+.welcome-patient .btn-primary {
+    font-weight: 600;
+    padding: 0.6em 3em;
+    font-size: 1.5rem;
+}
+.welcome-patient h2, .welcome-patient h1 {
+    color: #4b49da;
+    font-weight: 600;
+}
+.welcome-patient .btn-light {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: auto;
+}
+
+/*first patient result*/
+.first-patient-result h1, .first-patient-result h2 {
+    color: #4b49da;
+}
+.first-patient-result label {
+    color: #4b49da;
+}
+
+/*recommend, recommend-step2*/
+.recommend h1, .recommend-step2 h1 {
+    font-size: 1.7rem;
+    color: #2D2D29;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+.recommend h2:first-of-type {
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: 1em;
+}
+.recommend h2 {
+    font-size: 1.6rem;
+}
+.recommend input, .recommend button {
+    padding: 0.5em;
+    font-size: 1.4rem;
+}
+.recommend .sex input+label {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-position: center;
+    margin: 1rem;
+}
+.recommend #practitioner_form_sex_0+label {
+    background-image: url('../img/homme.JPG');
+}
+.recommend #practitioner_form_sex_1+label {
+    background-image: url('../img/femme.JPG');
+}
+.recommend #practitioner_form_sex_2, .recommend #practitioner_form_sex_2+label {
+    display: none;
+}
+.recommend #practitioner_form_step1_sex_0+label {
+    background-image: url('../img/homme.JPG');
+}
+.recommend #practitioner_form_step1_sex_1+label {
+    background-image: url('../img/femme.JPG');
+}
+.recommend .accept_conditions{
+    width: 3%;
+}
+.recommend .label_conditions{
+    color: #4B49DA;
+}
+.recommend .sex input[type="radio"]:checked+label {
+    box-shadow: 0 0 0 4pt #4B48D0;
+}
+.recommend .sex input {
+    display: none;
+}
+
+/*recommend no search*/
+.recommend-known {
+    margin-top: 1rem;
+}
+.recommend-known img:first-of-type {
+    max-width: 100%;
+    max-height: 220px;
+    margin-bottom: 1rem;
+}
+.recommend-known h1 {
+    font-size: 2.1rem;
+    margin-bottom: 0.3em;
+}
+@media (max-width: 576px) {
+    .recommend-known .rating-table {
+        padding: 1em 1em;
+    }
+    .recommend-known .rating-table select {
+        font-size: 1.2rem;
+        width: auto;
+    }
+}
+.recommend-known h2, .recommend-known button {
+    font-size: 1.8rem;
+    margin-bottom: 2em;
+}
+
+/*recommend unknown*/
+label[for="dontknow-postalCode"], label[for="dontknow-pathology"] {
+    height: auto;
+}
+
+/*recommend-step2*/
+@media (min-width: 992px) {
+    .recommend-step2 {
+        padding: 1rem 5rem;
+    }
+}
+.recommend-step2 .title {
+    margin: 1em;
+}
+.recommend-step2 .title h2 {
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: 1em;
+}
+.recommend-step2 .appointment {
+    padding: 0 5em;
+}
+.recommend-step2 .appointment > h2:first-of-type {
+    background-color: #D5D5D5;
+    border-radius: 18px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 1em;
+}
+.recommend-step2 .button-select label[for="dontknow-website"] {
+    height: auto;
+}
+.recommend-step2 .rating-table select {
+    font-size: 1.6rem;
+}
+
+/*critères importants*/
+.criteres-importants {
+    text-align: center;
+}
+.criteres-importants .image-bloc {
+    height: 150px;
+}
+.criteres-importants .image-bloc img {
+    max-height: 85%;
+    max-width: 85%;
+}
+
+/*show-practitioner page*/
+.evaluations li {
+    font-style: italic;
+}
+.evaluations li span {
+    font-style: normal;
+    font-weight: bold;
+}
+
+/*recommend practitioner home*/
+.role-to-play {
+    text-align: center;
+}
+.role-to-play h2 {
+    font-size: 2.1rem;
+    font-weight: 600;
+    margin: 1.5em;
+}
+.role-to-play p {
+    font-size: 1.8rem;
+    margin-bottom: 2.8rem;
+}
+.role-to-play form select {
+    padding: 0.4em;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 2em;
+}
+.role-to-play form button {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 3em;
+}
+.role-to-play a {
+    font-size: 1.3rem;
+}
+
+/*practitioner ereputation tools*/
+.ereputation-tools .btn-light {
+    margin: 1em;
+    font-size: 1.3rem;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.3em;
+}
+@media (max-width: 992px) {
+    .ereputation-tools .btn-light {
+        height: 4em;
+    }
+}
+.ereputation-tools h1 {
+    text-align: center;
+    font-weight: 600;
+    margin: 3em auto 2em auto;
+}
+
+/*practioner profile 30%*/
+.welcome-images img:first-child {
+    width: 60px;
+}
+.welcome-images img:last-child {
+    width: 180px;
+}
+
+/*practitioner profile short*/
+.short-profile .logo-doctolib {
+    width: 80px;
+}
+.short-profile .practitioner-face {
+    border-radius: 48px;
+    max-width: 160px;
+    max-height: 145px;
+}
+
+/*show profile*/
+.show .intro h1 {
+    color: #4B49DA;
+}
+.show .intro p {
+    color: #0D0D0D;
+    opacity: 0.6;
+}
+.show .appointment-title {
+    background-color: #D5D5D5;
+    color: #0D0D0D;
+    border-radius: 11px;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    padding: 1em;
+}
+.show .cabinet-title {
+    font-weight: bold;
+}
+.show .cabinet-title:hover {
+    cursor: help;
+}
+.show .criterions.additional {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    transition-property: z-index;
+    transition-duration: 0.1s;
+}
+.show .cabinet-title:hover .criterions.additional {
+    z-index: 1;
+    opacity: 1;
+}
+.show .criterions.additional h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1em;
+}
+.show .title-input {
+    text-align: center;
+}
+.show .title-input h2 {
+    height: 2.5em;
+}
+.show .title-input p {
+    margin-bottom: 0;
+    padding-bottom: 1em;
+}
+.show .title-input ul {
+    list-style-type: none;
+    padding: 0;
+}
+.show .rating-table span {
+    font-size: 1.6rem;
+}
+
+/*footer*/
+footer {
+    font-size: 0.6rem;
+}
+footer p {
+    margin: 0.5em;
+}
+
+
+.top-25px {
+    top: 25px;
+}
+#importanceCriterions select {
+    background-size: 1px;
+}

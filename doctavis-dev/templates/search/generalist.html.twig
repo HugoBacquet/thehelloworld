@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'partiels/flashbag.html.twig' %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-8 col-xl-7 text-center">
+                <div class="shadowed-disc mb-4">
+                    <img src="{{ asset('img/logo-coeur.png') }}" alt="Logo doctavis" />
+                </div>
+                <h1 class="fs-2 fw-normal mb-4">Vous ne connaissez ou ne trouvez pas le professionel de santé dont vous avez besoin ?</h1>
+            </div>
+            <div class="col-sm-8 col-xl-12 text-center">
+                <h2 class="fs-3 fw-bold mb-4">Pas d'inquiétude !</h2>
+                <h3 class="mb-4">Choisissez un médecin généraliste qui vous ressemble, il vous aiguillera dans votre recherche</h3>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-3">
+                    <a href="{{ path('search_by_criterions') }}" class="btn btn-primary mb-5">Je choisis mon médecin généraliste</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base_without_header.html.twig' %}
+{% block body %}
+    <div class="container role-to-play">
+        <div class="row justify-content-center">
+            <div class="col-sm-11">
+                {% if search is not null %}
+                    <div class="d-flex flex-column align-items-center welcome-images">
+                        <img src="{{ asset('img/logo-coeur.png') }}" alt="Logo doctavis" />
+                        <img src="{{ asset('img/perso-welcome.png') }}" alt="Logo doctavis" />
+                    </div>
+                    <h1>Merci de votre confiance !</h1>
+                    <h2>En attendant vous avez un rôle à jouer</h2>
+                {% else %}
+                    <h2>Vous avez un rôle à jouer !</h2>
+                {% endif %}
+                <p>Recommandez vos meilleurs praticiens et permettez au plus grand nombre de choisir, comme vous,
+                    les partenaires qui leurs ressemblent</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-8">
+                {{ form_start(form) }}
+                {{ form_widget(form.practitioner, { 'attr' : { 'class': 'js-example-basic-multiple form-select' }}) }}
+                {{ form_errors(form.practitioner) }}
+
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        {{ form_label(form.submit) }}
+                        {{ form_widget(form.submit, { 'attr' : { 'class': 'btn btn-primary mt-5' }}) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-md-center mb-5">
+                <a href="{{ path('recommend_practitioner') }}">Je ne trouve pas mon professionnel de santé, je l'ajoute</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

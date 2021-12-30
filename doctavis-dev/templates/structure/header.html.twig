@@ -1,0 +1,40 @@
+<header>
+   <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+         <a class="navbar-brand" href="{{ path('home') }}"><img src="{{ asset('img/logo.png') }}" alt="Logo Doctavis" /></a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><img class="w-100 h-100" src="{{ asset('img/menu-icon.png') }}" alt="Logo Doctavis" /></span>
+         </button>
+         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav text-end">
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ path('our_vision') }}">Notre vision</a>
+               </li>
+               {% if not app.user %}
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ path('note_practitioner') }}">Recommander un praticien</a>
+                  </li>
+               {% endif %}
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ path('contact') }}">Contactez-nous</a>
+                  </li>
+               {% if app.user %}
+                  {% set dashboard = path('dashboard') %}
+                  {% if app.request.pathInfo is not same as(dashboard) %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ path('dashboard') }}">Mon compte</a>
+                     </li>
+                  {% endif %}
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                  </li>
+               {% else %}
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ path('app_login') }}">Vous êtes professionnel de santé ?</a>
+                  </li>
+               {% endif %}
+            </ul>
+         </div>
+      </div>
+   </nav>
+</header>

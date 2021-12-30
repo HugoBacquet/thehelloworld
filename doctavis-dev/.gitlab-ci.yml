@@ -1,0 +1,46 @@
+stages:
+  - deploy
+
+dump-database:
+  image: alpine:latest
+  stage: deploy
+  only:
+    - schedules
+  before_script:
+    - apk add --update openssh-client bash
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - OUTDIR=$(date +%Y_%m_%d)
+    - apk add python3 py3-pip
+    - pip3 install --upgrade pip
+    - pip3 install awscli
+    - rm -rf /var/cache/apk/*
+
+  script:
+    - ssh -t ubuntu@$AWS_HOST_RECETTE "sudo mysqldump -u $MYSQL_USER -p$MYSQL_PASSWORD doctavis | gzip > dump_$OUTDIR.sql.zip"
+    - scp ubuntu@$AWS_HOST_RECETTE:dump_$OUTDIR.sql.zip /tmp/dump_$OUTDIR.sql.zip
+    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    - aws s3 cp /tmp/dump_$OUTDIR.sql.zip s3://doctavis-database/dump_$OUTDIR.zip
+    - ssh -t ubuntu@$AWS_HOST_RECETTE "rm dump_*.zip"
+
+deploy_preprod:
+  image: alpine:latest
+  before_script:
+    - apk add --update openssh-client bash
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  stage: deploy
+  only:
+    - dev
+  except:
+    - schedules
+  script:
+    - ssh ubuntu@$AWS_HOST_RECETTE "cd /var/www/doctavis && sh pull.sh"
+  environment:
+    name: preprod
+    url: https://doctavis.itefficience.com

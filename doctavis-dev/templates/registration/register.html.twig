@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 m-5">
+                {{ form_start(registrationForm) }}
+                {% for flashError in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                {% endfor %}
+
+                <div class="row">
+                    <div class="shadowed-disc mb-4">
+                        <img src="{{ asset('img/logo-coeur.png') }}" alt="Logo doctavis" />
+                    </div>
+                </div>
+                <h1 class="text-center">S'enregistrer</h1>
+                <p class="fs-5 text-center">Inscrivez-vous et gagnez qualitativement en visibilité, tout en profitant d’un outil efficace pour les professionnels de santé offrant une meilleure orientation patients et ainsi réduire les visites inutiles, les abandons ou les mauvaises prises de traitement.</p>
+
+                {% if form_errors(registrationForm) %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form_errors(registrationForm) }}
+                    {{ form_errors(registrationForm.plainPassword.first) }}
+                </div>
+                {% endif %}
+                {{ form_widget(registrationForm.email, {
+                    attr: {
+                        placeholder: 'Adresse mail'
+                    }
+                }) }}
+                {{ form_widget(registrationForm.plainPassword.first, {
+                    attr: {
+                        placeholder: 'Mot de passe'
+                    }
+                }) }}
+                {{ form_widget(registrationForm.plainPassword.second, {
+                    attr: {
+                        placeholder: 'Confirmation mot de passe'
+                    }
+                }) }}
+                {{ form_label(registrationForm.agreeTerms) }}
+                {{ form_widget(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.newsletter) }}
+                {{ form_widget(registrationForm.newsletter) }}
+
+                <div class="row">
+                    <div class="col text-end">
+                        <button type="submit" class="btn btn-primary my-3">S'enregistrer</button>
+                    </div>
+                </div>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
